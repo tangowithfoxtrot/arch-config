@@ -1,0 +1,53 @@
+---
+- name: Create the `aur_builder` user
+  become: true
+  user:
+    name: aur_builder
+    create_home: yes
+    group: wheel
+
+- name: Allow the `aur_builder` user to run `sudo pacman` without a password
+  become: true
+  lineinfile:
+    path: /etc/sudoers.d/11-install-aur_builder
+    line: "aur_builder ALL=(ALL) NOPASSWD: /usr/bin/pacman"
+    create: yes
+    validate: "visudo -cf %s"
+
+- name: Install AUR packages
+  kewlfft.aur.aur:
+    use: auto
+    name: "{{ item }}"
+    state: present
+    update_cache: no
+  loop:
+    - autorestic-bin
+    - dotnet-sdk-bin
+    - element-desktop
+    - espanso-bin
+    - kotatogram-desktop-bin
+    - krew-bin
+    - kubectl
+    - pavucontrol-qt
+    - mullvad-vpn-bin
+    - openrazer-daemon
+    - polychromatic
+    - python-openrazer
+    - slack-desktop
+    - visual-studio-code-bin
+  become: true
+  become_user: aur_builder
+
+- name: Kill all tasks for the `aur_builder` user
+  become: true
+  become_user: root
+  shell: pkill -u aur_builder 2>/dev/null || true
+  ignore_errors: true
+  changed_when: false
+
+- name: Remove the `aur_builder` user
+  become: true
+  become_user: root
+  user:
+    name: aur_builder
+    state: absent

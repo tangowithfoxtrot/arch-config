@@ -1,0 +1,9 @@
+---
+- name: Install KDE
+  pacman:
+    name: "{{ item }}"
+    state: present
+    update_cache: yes
+  loop:
+    - bluedevil
+    - plasma-meta

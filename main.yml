@@ -1,0 +1,30 @@
+---
+- hosts: all
+  become: true
+  become_user: root
+  roles:
+    - configs
+    - pacman
+    - aur
+
+- hosts: all
+  become: true
+  become_user: root
+  vars_prompt:
+    - name: "Install Nvidia drivers?"
+      prompt: "Install Nvidia drivers?"
+      private: no
+      default: "no"
+  roles:
+    - nvidia
+
+- hosts: all
+  become: true
+  become_user: root
+  vars_prompt:
+    - name: "Install KDE?"
+      prompt: "Install KDE?"
+      private: no
+      default: "no"
+  roles:
+    - kde

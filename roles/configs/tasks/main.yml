@@ -1,0 +1,44 @@
+---
+- name: Check if SDDM is installed
+  shell: "pacman -Qs sddm"
+  register: sddm_installed
+  ignore_errors: true
+  changed_when: false
+
+- name: Check if Nvidia drivers are installed
+  shell: "pacman -Qs nvidia"
+  register: nvidia_installed
+  ignore_errors: true
+  changed_when: false
+
+- name: Copy sddm.conf
+  copy:
+    src: ./files/sddm.conf
+    dest: /etc/sddm.conf
+    owner: root
+    group: root
+    mode: "0644"
+  when: sddm_installed.rc == 0
+
+- name: Copy nvidia.hook
+  copy:
+    src: ./files/nvidia.hook
+    dest: /etc/pacman.d/hooks/nvidia.hook
+    owner: root
+    group: root
+    mode: "0644"
+  when: nvidia_installed.rc == 0
+
+- name: Enable IPv4 Forwarding
+  blockinfile:
+    path: /etc/sysctl.d/enabled_ipv4_forwarding.conf
+    block: |
+      net.ipv4.conf.all.forwarding=1
+    create: true
+
+- name: Disable IPv6
+  blockinfile:
+    path: /etc/sysctl.d/disabled_ipv6.conf
+    block: |
+      net.ipv6.conf.all.disable_ipv6=1
+    create: true

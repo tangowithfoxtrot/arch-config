@@ -1,0 +1,67 @@
+---
+- name: Install Nvidia drivers
+  pacman:
+    name: "{{ item }}"
+    state: present
+    update_cache: yes
+  loop:
+    - nvidia-lts
+    - nvidia-utils
+    - nvidia-settings
+  when: nvidia_installed.rc == 1
+
+- name: Check if nvidia-drm.modset=1 is already in the kernel parameters
+  shell: "cat /etc/default/grub | grep nvidia-drm.modeset=1"
+  register: nvidia_drm_modset
+  ignore_errors: true
+  changed_when: false
+
+- name: Check if GRUB_SAVEDEFAULT is already set to true
+  shell: "cat /etc/default/grub | grep GRUB_SAVEDEFAULT=true"
+  register: grub_savedefault
+  ignore_errors: true
+  changed_when: false
+
+- name: Check if GRUB_DEFAULT is already set to saved
+  shell: "cat /etc/default/grub | grep GRUB_DEFAULT=saved"
+  register: grub_default
+  ignore_errors: true
+  changed_when: false
+
+- name: Backup the grub file
+  copy:
+    src: /etc/default/grub
+    dest: /etc/default/grub.bak
+    owner: root
+    group: root
+    mode: "0644"
+
+- name: Add nvidia-drm.modeset=1 to GRUB_CMDLINE_LINUX_DEFAULT
+  replace:
+    path: /etc/default/grub
+    regexp: '^(GRUB_CMDLINE_LINUX_DEFAULT=(?:(?![" ]{{ option | regex_escape }}=).)*)(?:[" ]{{ option | regex_escape }}=\S+)?(.*")$'
+    replace: '\1 {{ option }}={{ value }}\2'
+  vars:
+    option: nvidia-drm.modeset
+    value: 1
+  when: nvidia_installed.rc == 0 and nvidia_drm_modset.rc == 1
+
+- name: Add GRUB_SAVEDEFAULT=true to /etc/default/grub
+  lineinfile:
+    path: /etc/default/grub
+    regexp: "^GRUB_SAVEDEFAULT"
+    line: "GRUB_SAVEDEFAULT=true"
+    state: present
+  when: grub_savedefault.rc == 1
+
+- name: Add GRUB_DEFAULT=saved to /etc/default/grub
+  lineinfile:
+    path: /etc/default/grub
+    regexp: "^GRUB_DEFAULT"
+    line: "GRUB_DEFAULT=saved"
+    state: present
+  when: grub_default.rc == 1
+
+- name: Update grub
+  shell: "grub-mkconfig -o /boot/grub/grub.cfg"
+  when: nvidia_installed.rc == 0 and nvidia_drm_modset.rc == 1 or grub_savedefault.rc == 1 or grub_default.rc == 1
