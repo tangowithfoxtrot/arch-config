@@ -5,7 +5,7 @@ Operation=Remove
 Type=Package
 Target=nvidia-lts
 Target=linux-lts
-# Change the linux part above and in the Exec line if a different kernel is used
+# Change the "linux-lts" part above and in the Exec line if a different kernel is used
 
 [Action]
 Description=Update NVIDIA module in initcpio
