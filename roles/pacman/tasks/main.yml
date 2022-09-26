@@ -1,4 +1,9 @@
 ---
+- name: include variables
+  include_vars: 
+    file: packages.yml
+    name: packages
+
 - name: Remove pacman packages
   pacman:
     name: "{{ item }}"
@@ -13,44 +18,4 @@
     name: "{{ item }}"
     state: present
     update_cache: yes
-  loop:
-  - android-tools
-  - bat
-  - bitwarden-cli
-  - bridge-utils # libvirt
-  - cdrkit
-  - dnsmasq # libvirt
-  - docker
-  - docker-compose
-  - element-desktop
-  - exa
-  - flameshot
-  - fish
-  - freerdp
-  - gcc
-  - git
-  - glow
-  - iptables-nft
-  - jq
-  - kubectl
-  - libvirt # libvirt
-  - make
-  - neovim
-  - openbsd-netcat # libvirt
-  - openssh
-  - pkg-config # libvirt
-  - qemu-full # libvirt
-  - restic
-  - ruby # vagrant
-  - scrcpy
-  - signal-desktop
-  - starship
-  - steam
-  - terraform
-  - terragrunt
-  - ttf-roboto
-  - ttf-roboto-mono
-  - vagrant
-  - virt-manager
-  - wget
-  - yt-dlp
+  loop: "{{ packages.pacman_added }}"

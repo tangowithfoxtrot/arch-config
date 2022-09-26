@@ -29,6 +29,38 @@
     mode: "0644"
   when: nvidia_installed.rc == 0
 
+- name: pwd command
+  shell: pwd
+  register: pwd
+  changed_when: false
+
+- name: Hardlink imperative_deletion.sh to /usr/local/bin
+  file:
+    src: "{{ pwd.stdout }}/files/imperative_deletion.sh"
+    dest: /usr/local/bin/imperative_deletion.sh
+    state: link
+    owner: root
+    group: root
+    mode: "0755"
+    force: true
+  become: true
+  become_user: root
+
+- name: Copy Imperative Deletion Service
+  copy:
+    src: ./files/imperative-deletion.service
+    dest: /etc/systemd/system/imperative-deletion.service
+    owner: root
+    group: root
+    mode: "0755"
+
+- name: Enable imperative-deletion.service
+  systemd:
+    name: imperative-deletion.service
+    daemon_reload: true
+    enabled: true
+    state: stopped
+
 - name: Enable IPv4 Forwarding
   blockinfile:
     path: /etc/sysctl.d/enabled_ipv4_forwarding.conf

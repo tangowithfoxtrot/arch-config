@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Install
+Operation = Remove
+Type = Package
+Target = *
+
+[Action]
+Description = Output package list to /etc/pkglist.yml
+When = PostTransaction
+Exec = /bin/sh -c "/usr/bin/pacman -Qnqe | sort | sed 's/^/  - /g' > /etc/pkglist.yml && /usr/bin/pacman -Qme | cut -f 1 -d ' ' | sort | sed 's/^/  - /g' > /etc/pkglist_aur.yml"

@@ -1,0 +1,339 @@
+pacman_added:
+  - alacritty
+  - android-tools
+  - ansible
+  - autorestic-bin
+  - bat
+  - bind
+  - binutils
+  - bitwarden-cli
+  - cdrtools
+  - docker
+  - docker-compose
+  - element-desktop
+  - exa
+  - firefox
+  - fish
+  - flameshot
+  - flatpak
+  - freerdp
+  - glow
+  - go-yq
+  - inetutils
+  - iptables-nft
+  - jq
+  - mtpfs
+  - neovim
+  - obs-studio
+  - pavucontrol-qt
+  - popcorntime-bin
+  - qemu-full
+  - scrcpy
+  - signal-desktop
+  - starship
+  - steam
+  - sudo
+  - syncthing
+  - terraform
+  - terragrunt
+  - ttf-roboto
+  - ttf-roboto-mono
+  - vagrant
+  - virt-manager
+  - yt-dlp
+
+aur_added:
+  - autorestic-bin
+  - chromium-extension-web-store
+  - dotnet-sdk-bin
+  - element-desktop
+  - espanso-bin
+  - kotatogram-desktop-bin
+  - krew-bin
+  - kubectl
+  - mullvad-vpn-bin
+  - obs-linuxbrowser-bin
+  - obs-studio
+  - openrazer-daemon
+  - openrazer-driver-dkms
+  - pacmanfile
+  - polychromatic
+  - popcorntime-bin
+  - python-openrazer
+  - slack-desktop
+  - ungoogled-chromium-bin
+  - visual-studio-code-bin
+
+base_packages:
+  - accountsservice
+  - adobe-source-han-sans-cn-fonts
+  - adobe-source-han-sans-jp-fonts
+  - adobe-source-han-sans-kr-fonts
+  - alsa-firmware
+  - alsa-plugins
+  - alsa-utils
+  # - amd-ucode
+  - autoconf
+  - automake
+  - archlinux-keyring
+  - b43-fwcutter
+  - base
+  - base-devel
+  - bash-completion
+  - bison
+  - bluez
+  - bluez-utils
+  - broadcom-wl-dkms
+  - btrfs-progs
+  - cantarell-fonts
+  - cryptsetup
+  - device-mapper
+  - dhclient
+  - dialog
+  - diffutils
+  - dmidecode
+  - dmraid
+  - dnsmasq
+  - dnsutils
+  - dosfstools
+  - downgrade
+  - duf
+  - e2fsprogs
+  - efibootmgr
+  - efitools
+  - endeavouros-keyring
+  - endeavouros-mirrorlist
+  - endeavouros-theming
+  - eos-apps-info
+  - eos-hooks
+  - eos-log-tool
+  - eos-packagelist
+  - eos-quickstart
+  - eos-rankmirrors
+  - eos-update-notifier
+  - ethtool
+  - exfatprogs
+  - f2fs-tools
+  - fakeroot
+  - flex
+  - ffmpegthumbnailer
+  - file
+  - findutils
+  - firewalld
+  - freetype2
+  - fsarchiver
+  - gawk
+  - gcc
+  - gettext
+  - git
+  - glances
+  - grep
+  - groff
+  - grub
+  - gst-libav
+  - gst-plugin-pipewire
+  - gst-plugins-bad
+  - gst-plugins-ugly
+  - gzip
+  - haveged
+  - hdparm
+  - hwdetect
+  - hwinfo
+  - intel-ucode
+  - inxi
+  - iwd
+  - jfsutils
+  - less
+  - libdvdcss
+  - libgsf
+  - libopenraw
+  - libtool
+  - libwnck3
+  - linux-firmware
+  - linux-headers
+  - linux-lts
+  - linux-lts-headers
+  - logrotate
+  - lsb-release
+  - lsscsi
+  - lvm2
+  - m4
+  - make
+  - man-db
+  - man-pages
+  - mdadm
+  - meld
+  - mesa-utils
+  - mkinitcpio
+  - mkinitcpio-busybox
+  - mkinitcpio-nfs-utils
+  - mkinitcpio-openswap
+  - mlocate
+  - modemmanager
+  - mtools
+  - nano
+  - nano-syntax-highlighting
+  - nbd
+  - ndisc6
+  - neofetch
+  - netctl
+  - networkmanager
+  - networkmanager-openvpn
+  - nfs-utils
+  - nilfs-utils
+  - nmap
+  - noto-fonts
+  - nss-mdns
+  - ntfs-3g
+  - ntp
+  - openbsd-netcat
+  - openconnect
+  - openvpn
+  - os-prober
+  - pacman
+  - pacman-contrib
+  - patch
+  - pavucontrol
+  - perl
+  - pipewire-alsa
+  - pipewire-jack
+  - pipewire-pulse
+  - pkgconf
+  - pkgfile
+  - poppler-glib
+  - power-profiles-daemon
+  - ppp
+  - pptpclient
+  - pv
+  - python
+  - python-capng
+  - python-defusedxml
+  - python-packaging
+  - python-pyqt5
+  - rebuild-detector
+  - reflector
+  - reflector-simple
+  - reiserfsprogs
+  - rp-pppoe
+  - rsync
+  - rtkit
+  - sed
+  - sg3_utils
+  - smartmontools
+  - sof-firmware
+  - sshfs
+  - sysfsutils
+  - systemd-sysvcompat
+  - texinfo
+  - tldr
+  - ttf-bitstream-vera
+  - ttf-dejavu
+  - ttf-liberation
+  - ttf-opensans
+  - unrar
+  - unzip
+  - upower
+  - usb_modeswitch
+  - usbutils
+  - vi
+  - vpnc
+  - welcome
+  - wget
+  - which
+  - whois
+  - wireless-regdb
+  - wireless_tools
+  - wireplumber
+  - wpa_supplicant
+  - xdg-user-dirs
+  - xdg-utils
+  - xf86-input-libinput
+  - xf86-video-amdgpu
+  - xf86-video-ati
+  - xf86-video-intel
+  - xfsprogs
+  - xl2tpd
+  - xorg-server
+  - xorg-xdpyinfo
+  - xorg-xinit
+  - xorg-xinput
+  - xorg-xkill
+  - xorg-xrandr
+  - xz
+  - yad-eos
+  - yay
+
+gnome: # these are commented-out because they are not installed on my system, and would interfere with the `diff` function I use to remove non-declaratively-installed packages
+  # - adwaita-icon-theme
+  # - arc-gtk-theme-eos
+  # - eos-qogir-icons
+  # - eog
+  # - evince
+  # - file-roller
+  # - gdm
+  # - gedit
+  # - gnome-calculator
+  # - gnome-control-center
+  # - gnome-disk-utility
+  # - gnome-keyring
+  # - gnome-nettool
+  # - gnome-power-manager
+  # - gnome-screenshot
+  # - gnome-shell
+  # - gnome-terminal
+  # - gnome-themes-extra
+  # - gnome-tweaks
+  # - gnome-usage
+  # - gvfs
+  # - gvfs-afc
+  # - gvfs-gphoto2
+  # - gvfs-mtp
+  # - gvfs-nfs
+  # - gvfs-smb
+  # - nautilus
+  # - nautilus-sendto
+  # - sushi
+  # - totem
+  # - xdg-user-dirs-gtk
+
+kde:
+  - ark
+  - audiocd-kio
+  - bluedevil
+  - breeze-gtk
+  - discover
+  - dolphin
+  - dragon
+  - elisa
+  - eos-plasma-sddm-config
+  - gwenview
+  - kcalc
+  - kate
+  - kcalc
+  - kdeconnect
+  - kde-gtk-config
+  - khotkeys
+  - kinfocenter
+  - kinit
+  - kio-fuse
+  - konsole
+  - kscreen
+  - kwallet-pam
+  - okular
+  - packagekit-qt5
+  - plasma-desktop
+  - plasma-disks
+  - plasma-meta
+  - plasma-nm
+  - plasma-pa
+  - powerdevil
+  - print-manager
+  - sddm-kcm
+  - solid
+  - spectacle
+  - xsettingsd
+
+nvidia:
+  - nvidia-lts
+  - nvidia-utils
+  - nvidia-settings

@@ -1,0 +1,9 @@
+[Unit]
+Description=Delete imperatively installed packages
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/imperative_deletion
+
+[Install]
+WantedBy=multi-user.target

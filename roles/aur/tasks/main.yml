@@ -1,4 +1,10 @@
 ---
+# add variables here
+- name: include variables
+  include_vars: 
+    file: packages.yml
+    name: packages
+
 - name: Create the `aur_builder` user
   become: true
   user:
@@ -19,22 +25,9 @@
     use: auto
     name: "{{ item }}"
     state: present
-    update_cache: no
-  loop:
-    - autorestic-bin
-    - dotnet-sdk-bin
-    - element-desktop
-    - espanso-bin
-    - kotatogram-desktop-bin
-    - krew-bin
-    - kubectl
-    - pavucontrol-qt
-    - mullvad-vpn-bin
-    - openrazer-daemon
-    - polychromatic
-    - python-openrazer
-    - slack-desktop
-    - visual-studio-code-bin
+    update_cache: false
+  loop: "{{ packages.aur_added }}"
+
   become: true
   become_user: aur_builder
 
