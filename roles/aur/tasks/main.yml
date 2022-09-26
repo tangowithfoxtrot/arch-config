@@ -9,15 +9,16 @@
   become: true
   user:
     name: aur_builder
-    create_home: yes
+    create_home: true
     group: wheel
+  changed_when: false
 
 - name: Allow the `aur_builder` user to run `sudo pacman` without a password
   become: true
   lineinfile:
     path: /etc/sudoers.d/11-install-aur_builder
     line: "aur_builder ALL=(ALL) NOPASSWD: /usr/bin/pacman"
-    create: yes
+    create: true
     validate: "visudo -cf %s"
 
 - name: Install AUR packages
@@ -44,3 +45,4 @@
   user:
     name: aur_builder
     state: absent
+  changed_when: false
