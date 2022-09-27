@@ -8,7 +8,7 @@
   pacman:
     name: "{{ item }}"
     state: present
-    update_cache: yes
+    update_cache: true
   loop: "{{ packages.nvidia }}"
   when: nvidia_installed.rc == 1
 

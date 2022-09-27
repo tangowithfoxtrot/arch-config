@@ -8,7 +8,7 @@
   pacman:
     name: "{{ item }}"
     state: absent
-    update_cache: yes
+    update_cache: false
   loop:
   - gnu-netcat # libvirt
   - iptables # we're installing iptables-nft, which is newer
@@ -17,5 +17,5 @@
   pacman:
     name: "{{ item }}"
     state: present
-    update_cache: yes
+    update_cache: false
   loop: "{{ packages.pacman_added }}"

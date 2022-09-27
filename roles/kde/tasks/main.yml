@@ -8,5 +8,6 @@
   pacman:
     name: "{{ item }}"
     state: present
-    update_cache: yes
+    update_cache: true
   loop: "{{ packages.kde }}"
+  when: kde == "yes"
