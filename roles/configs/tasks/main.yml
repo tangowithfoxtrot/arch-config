@@ -34,17 +34,14 @@
   register: pwd
   changed_when: false
 
-- name: Hardlink imperative_deletion.sh to /usr/local/bin
+- name: Symlink imperative_deletion.sh to /usr/local/bin/imperative_deletion
   file:
-    src: "{{ pwd.stdout }}/files/imperative_deletion.sh"
-    dest: /usr/local/bin/imperative_deletion.sh
+    src: "{{ pwd.stdout }}/imperative_deletion.sh"
+    dest: /usr/local/bin/imperative_deletion
     state: link
     owner: root
     group: root
     mode: "0755"
-    force: true
-  become: true
-  become_user: root
 
 - name: Copy Imperative Deletion Service
   copy:
