@@ -51,6 +51,21 @@
     group: root
     mode: "0755"
 
+- name: Copy sshd.service
+  copy:
+    src: ./files/sshd.service
+    dest: /usr/lib/systemd/system/sshd.service
+    owner: root
+    group: root
+    mode: "0755"
+
+- name: Enable sshd.service
+  systemd:
+    name: sshd.service
+    daemon_reload: true
+    enabled: true
+    state: started
+
 - name: Enable imperative-deletion.service
   systemd:
     name: imperative-deletion.service
