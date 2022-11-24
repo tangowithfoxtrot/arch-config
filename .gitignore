@@ -1,1 +1,2 @@
-imperative_deletion.sh
+# run `git update-index --assume-unchanged imperative_deletion.sh`
+# to ignore the changes to imperative_deletion.sh that ansible makes
