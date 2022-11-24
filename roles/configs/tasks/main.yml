@@ -51,6 +51,35 @@
     group: root
     mode: "0755"
 
+- name: Copy modules.conf
+  copy:
+    src: ./files/modules.conf
+    dest: /etc/modules-load.d/modules.conf
+    owner: root
+    group: root
+    mode: "0755"
+
+- name: Copy logind.conf
+  copy:
+    src: ./files/logind.conf
+    dest: /etc/systemd/logind.conf
+    owner: root
+    group: root
+    mode: "0755"
+
+- name: Restart logind service
+  systemd:
+    name: systemd-logind
+    state: restarted
+  changed_when: false
+
+- name: Enable XINPUT2 (gestures) in Firefox
+  lineinfile:
+    path: /etc/profile.d/use-xinput2.sh
+    line: 'export MOZ_USE_XINPUT2=1'
+    insertafter: EOF
+    create: true
+  
 - name: Copy sshd.service
   copy:
     src: ./files/sshd.service
