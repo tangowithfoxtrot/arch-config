@@ -6,61 +6,90 @@ pacman_added:
   - bat
   - bind
   - binutils
+  - bitwarden
   - bitwarden-cli
   - cdrtools
   - docker
   - docker-compose
+  - dotnet-sdk-6.0
   - element-desktop
   - exa
+  - ffmpegthumbs
   - firefox
   - fish
   - flameshot
   - flatpak
   - freerdp
+  - fuse-overlayfs # for rootless docker
   - glow
   - go-yq
   - inetutils
+  - intel-ucode
   - iptables-nft
   - jq
+  - kdegraphics-thumbnailers
+  - kimageformats
+  - kwalletmanager
+  - libappimage
   - mtpfs
   - neovim
   - obs-studio
   - pavucontrol-qt
   - popcorntime-bin
+  - python-wheel
   - qemu-full
+  - qt5-imageformats
+  - rebuild-detector
   - scrcpy
   - signal-desktop
   - starship
   - steam
+  - strace
   - sudo
   - syncthing
+  - taglib
   - terraform
   - terragrunt
   - ttf-roboto
   - ttf-roboto-mono
   - vagrant
+  - vim
   - virt-manager
   - yt-dlp
+  - zerotier-one
 
 aur_added:
   - autorestic-bin
+  - chiaki
   - chromium-extension-web-store
-  - dotnet-sdk-bin
+  - ddcui-git
+  - ddcutil-git
+  - deskreen-bin
+  - docker-buildx
+  - docker-rootless-extras
   - element-desktop
   - espanso-bin
+  - insomnia-bin
   - kotatogram-desktop-bin
   - krew-bin
   - kubectl
   - mullvad-vpn-bin
-  - obs-linuxbrowser-bin
+  - nodejs-nativefier
+  - obs-backgroundremoval
   - obs-studio
   - openrazer-daemon
   - openrazer-driver-dkms
   - pacmanfile
   - polychromatic
+  - postman-bin
   - popcorntime-bin
   - python-openrazer
+  - python-updog
+  - refind
+  - refind-theme-dracula
   - slack-desktop
+  - slirp4netns # for rootless docker
+  - synth-bin
   - ungoogled-chromium-bin
   - visual-studio-code-bin
 
@@ -129,7 +158,7 @@ base_packages:
   - glances
   - grep
   - groff
-  - grub
+#  - grub # using refind
   - gst-libav
   - gst-plugin-pipewire
   - gst-plugins-bad
@@ -137,6 +166,7 @@ base_packages:
   - gzip
   - haveged
   - hdparm
+  - htop
   - hwdetect
   - hwinfo
   - intel-ucode
