@@ -13,7 +13,7 @@
   vars_prompt:
     - name: "nvidia"
       prompt: "Install Nvidia drivers?"
-      private: no
+      private: false
       default: "no"
   tasks:
     - name: Install Nvidia drivers
@@ -27,7 +27,7 @@
   vars_prompt:
     - name: "kde"
       prompt: "Install KDE?"
-      private: no
+      private: false
       default: "no"
   tasks:
     - name: Install KDE
