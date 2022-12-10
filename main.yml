@@ -1,15 +1,22 @@
 ---
 - hosts: all
   become: true
-  become_user: root
+  become_user: "{{ user }}"
+  become_method: sudo
+  vars_files:
+    - secrets.yml
   roles:
     - configs
     - pacman
     - aur
+  vars:
+    ansible_become_pass: "{{ become_pass }}"
 
 - hosts: all
   become: true
   become_user: root
+  vars_files:
+    - secrets.yml
   vars_prompt:
     - name: "nvidia"
       prompt: "Install Nvidia drivers?"
@@ -20,10 +27,14 @@
       include_role:
         name: nvidia
       when: nvidia == "yes"
+  vars:
+    ansible_become_pass: "{{ become_pass }}"
 
 - hosts: all
   become: true
   become_user: root
+  vars_files:
+    - secrets.yml
   vars_prompt:
     - name: "kde"
       prompt: "Install KDE?"
@@ -34,3 +45,5 @@
       include_role:
         name: kde
       when: kde == "yes"
+  vars:
+    ansible_become_pass: "{{ become_pass }}"
