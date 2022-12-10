@@ -9,5 +9,4 @@ marker='### {mark} ANSIBLE-MANAGED BLOCK ###' \
 block='arch_config_dir=$(pwd)' insertafter='set -e'"
 
 ansible-galaxy collection install -r requirements.yml
-ansible-playbook -i localhost, -c local --become --ask-become-pass \
-main.yml
+ansible-playbook -i localhost, -c local main.yml
