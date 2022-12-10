@@ -5,6 +5,7 @@
     name: packages
 
 - name: Remove pacman packages
+  become_user: root
   pacman:
     name: "{{ item }}"
     state: absent
@@ -14,6 +15,7 @@
   - iptables # we're installing iptables-nft, which is newer
 
 - name: Install pacman packages
+  become_user: root
   pacman:
     name: "{{ item }}"
     state: present
