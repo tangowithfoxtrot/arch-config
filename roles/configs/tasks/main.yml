@@ -1,4 +1,9 @@
 ---
+- name: Include secrets.yml
+  include_vars:
+    file: secrets.yml
+    name: secrets
+
 - name: Check if SDDM is installed
   shell: "pacman -Qs sddm"
   register: sddm_installed
@@ -51,6 +56,27 @@
     group: root
     mode: "0755"
 
+- name: Copy autorestic systemd services
+  copy:
+    src: "{{ item }}"
+    dest: /home/{{ user }}/.config/systemd/user/
+    owner: "{{ user }}"
+    group: "{{ user }}"
+    mode: "0644"
+  with_fileglob:
+    - ./files/autorestic/*
+
+- name: Enable autorestic systemd services
+  systemd:
+    name: "{{ item }}"
+    scope: user
+    daemon_reload: true
+    enabled: true
+    state: stopped
+  with_items:
+    - autorestic-backup.service
+    - autorestic-prune.service
+
 - name: Copy modules.conf
   copy:
     src: ./files/modules.conf
@@ -68,6 +94,7 @@
     mode: "0755"
 
 - name: Restart logind service
+  become_user: root
   systemd:
     name: systemd-logind
     state: restarted
@@ -79,7 +106,7 @@
     line: 'export MOZ_USE_XINPUT2=1'
     insertafter: EOF
     create: true
-  
+
 - name: Copy sshd.service
   copy:
     src: ./files/sshd.service
@@ -89,6 +116,7 @@
     mode: "0755"
 
 - name: Enable sshd.service
+  become_user: root
   systemd:
     name: sshd.service
     daemon_reload: true
@@ -96,6 +124,7 @@
     state: started
 
 - name: Enable imperative-deletion.service
+  become_user: root
   systemd:
     name: imperative-deletion.service
     daemon_reload: true
@@ -103,6 +132,7 @@
     state: stopped
 
 - name: Enable IPv4 Forwarding
+  become_user: root
   blockinfile:
     path: /etc/sysctl.d/enabled_ipv4_forwarding.conf
     block: |
@@ -110,6 +140,7 @@
     create: true
 
 - name: Disable IPv6
+  become_user: root
   blockinfile:
     path: /etc/sysctl.d/disabled_ipv6.conf
     block: |
