@@ -1,0 +1,5 @@
+[Unit]
+Description=Autorestic backup service (data pruning)
+[Service]
+Type=oneshot
+ExecStart=autorestic forget --verbose --all --prune

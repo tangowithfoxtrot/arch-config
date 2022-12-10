@@ -1,0 +1,6 @@
+[Unit]
+Description=Autorestic backup service
+[Service]
+Type=oneshot
+ExecStart=autorestic backup --verbose --all
+ExecStartPost=autorestic forget --verbose --all
