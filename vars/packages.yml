@@ -9,6 +9,7 @@ pacman_added:
   - bitwarden
   - bitwarden-cli
   - cdrtools
+  - cuda
   - docker
   - docker-compose
   - dotnet-sdk-6.0
@@ -39,6 +40,7 @@ pacman_added:
   - python-wheel
   - qemu-full
   - qt5-imageformats
+  - rclone
   - rebuild-detector
   - scrcpy
   - signal-desktop
@@ -60,6 +62,8 @@ pacman_added:
 
 aur_added:
   - autorestic-bin
+  - blender-lts-bin
+  - browsh-bin
   - chiaki
   - chromium-extension-web-store
   - ddcui-git
@@ -69,11 +73,13 @@ aur_added:
   - docker-rootless-extras
   - element-desktop
   - espanso-bin
+  - flyctl-bin
   - insomnia-bin
   - kotatogram-desktop-bin
   - krew-bin
   - kubectl
   - mullvad-vpn-bin
+  - nerd-fonts-complete
   - nodejs-nativefier
   - obs-backgroundremoval
   - obs-studio
@@ -91,6 +97,7 @@ aur_added:
   - slirp4netns # for rootless docker
   - synth-bin
   - ungoogled-chromium-bin
+  - upscayl-bin
   - visual-studio-code-bin
 
 base_packages:
